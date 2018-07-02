@@ -1,0 +1,796 @@
+#第一题
+cc=[28,32,29,30,34,25,26]
+print(cc[0])
+print(cc[1])
+print(cc[2])
+print(cc[3])
+print(cc[4])
+print(cc[5])
+print(cc[6])
+print("今天是： "+str(cc[2]))
+#第二题
+dd={"temp":[28,32,29,30,34,25,26],"wea":["晴","多云","阴","小雨","晴","小雨","阴"],"max":[28,32,29,30,34,25,26]}
+dd["temp"][2]
+dd["wea"][2]
+dd["max"][2]
+#第三题
+import urllib.request as r#导入联网工具包，命令为r
+url='http://api.openweathermap.org/data/2.5/weather?q=chongqing&mode=json&units=metric&lang=zh_cn&APPID=6a67ed641c0fda8b69715c43518b6996'
+data=r.urlopen(url).read().decode('utf-8')
+#讲str类型转换为dict
+import json
+data=json.loads(data)
+data['main']['temp']
+data['main']['pressure']
+data['weather']['description']
+data['weather'][0]['description']
+#第四题
+import urllib.request as r#导入联网工具包，命令为r
+url='http://api.openweathermap.org/data/2.5/forecast?q=chongqing,cn&mode=json&lang=zh_cn&&APPID=6a67ed641c0fda8b69715c43518b6996&units=metric'
+data=r.urlopen(url).read().decode('utf-8')
+#讲str类型转换为dict
+import json
+data=json.loads(data)
+#data字典-》list列表-》index 0 字典-》main字典-》temp变量
+data['list'][0]['main']['temp']
+#data字典-》list列表-》index 0 字典-》main字典-》temp_max变量
+
+#data字典-》list列表-》index 0 字典-》main字典-》temp_min变量
+#模板
+print("现在是{}的{}".format(data['city']['name'],data['list'][0]['dt_txt']),"温度是{}".format(data['list'][0]['main']['temp']),
+      "天气{}".format(data['list'][0]['weather'][0]['description']),"气压是{}".format(data['list'][0]['main']['pressure']),
+    "最高温度是{}".format(data['list'][0]['main']['temp_max']),
+  "最低温度是{}".format(data['list'][0]['main']['temp_min']) )
+#第一天6.21  
+#1
+print("6.21 6:00的{}".format(data['city']['name']),"温度是{}".format(data['list'][0]['main']['temp']),
+      "天气{}".format(data['list'][0]['weather'][0]['description']),"气压是{}".format(data['list'][0]['main']['pressure']),
+    "最高温度是{}".format(data['list'][0]['main']['temp_max']),
+    "最低温度是{}".format(data['list'][0]['main']['temp_min']) )
+print("6.21 12:00的{}".format(data['city']['name']),"温度是{}".format(data['list'][2]['main']['temp']),
+      "天气{}".format(data['list'][2]['weather'][0]['description']),"气压是{}".format(data['list'][2]['main']['pressure']),
+    "最高温度是{}".format(data['list'][2]['main']['temp_max']),
+    "最低温度是{}".format(data['list'][2]['main']['temp_min']) )
+print("6.21 18:00的{}".format(data['city']['name']),"温度是{}".format(data['list'][4]['main']['temp']),
+      "天气{}".format(data['list'][4]['weather'][0]['description']),"气压是{}".format(data['list'][4]['main']['pressure']),
+    "最高温度是{}".format(data['list'][4]['main']['temp_max']),
+    "最低温度是{}".format(data['list'][4]['main']['temp_min']) )
+
+#2
+print("6.21 6:00's{}".format(data['city']['name']),"tem is{}".format(data['list'][0]['main']['temp']),
+      "weather is{}".format(data['list'][0]['weather'][0]['main']),"pressure is{}".format(data['list'][0]['main']['pressure']),
+    "temp-max is{}".format(data['list'][0]['main']['temp_max']),
+    "temp-min is{}".format(data['list'][0]['main']['temp_min']) )
+print("6.21 12:00's{}".format(data['city']['name']),"tem is{}".format(data['list'][2]['main']['temp']),
+      "weather is{}".format(data['list'][2]['weather'][0]['main']),"pressure is{}".format(data['list'][2]['main']['pressure']),
+    "temp-max is{}".format(data['list'][2]['main']['temp_max']),
+    "temp-min is{}".format(data['list'][2]['main']['temp_min']) )
+print("6.21 18:00's{}".format(data['city']['name']),"tem is{}".format(data['list'][4]['main']['temp']),
+      "weather is{}".format(data['list'][4]['weather'][0]['main']),"pressure is{}".format(data['list'][4]['main']['pressure']),
+    "temp-max is{}".format(data['list'][4]['main']['temp_max']),
+    "temp-min is{}".format(data['list'][4]['main']['temp_min']) )
+#3
+print("今天{}".format(data['list'][2]['weather'][0]['description']),"出门记得带伞")
+print("今天{}".format(data['list'][2]['weather'][0]['description']),"不适合户外运动")
+print("今天温度是{}".format(data['list'][2]['main']['temp']),"注意添加衣物")
+print("今天风速{}".format(data['list'][2]['wind']['speed']),"记得及时收回晾晒的衣物")
+#第二天6.22
+#1
+print("6.22 6:00的{}".format(data['city']['name']),"温度是{}".format(data['list'][8]['main']['temp']),
+      "天气{}".format(data['list'][8]['weather'][0]['description']),"气压是{}".format(data['list'][8]['main']['pressure']),
+    "最高温度是{}".format(data['list'][8]['main']['temp_max']),
+    "最低温度是{}".format(data['list'][8]['main']['temp_min']) )
+
+print("6.22 12:00的{}".format(data['city']['name']),"温度是{}".format(data['list'][10]['main']['temp']),
+      "天气{}".format(data['list'][10]['weather'][0]['description']),"气压是{}".format(data['list'][10]['main']['pressure']),
+    "最高温度是{}".format(data['list'][10]['main']['temp_max']),
+    "最低温度是{}".format(data['list'][10]['main']['temp_min']) )
+print("6.22 18:00的{}".format(data['city']['name']),"温度是{}".format(data['list'][12]['main']['temp']),
+      "天气{}".format(data['list'][12]['weather'][0]['description']),"气压是{}".format(data['list'][12]['main']['pressure']),
+    "最高温度是{}".format(data['list'][12]['main']['temp_max']),
+    "最低温度是{}".format(data['list'][12]['main']['temp_min']) )
+
+#2
+print("6.22 6:00's{}".format(data['city']['name']),"tem is{}".format(data['list'][8]['main']['temp']),
+      "weather is{}".format(data['list'][8]['weather'][0]['main']),"pressure is{}".format(data['list'][8]['main']['pressure']),
+    "temp-max is{}".format(data['list'][8]['main']['temp_max']),
+    "temp-min is{}".format(data['list'][8]['main']['temp_min']) )
+print("6.22 12:00's{}".format(data['city']['name']),"tem is{}".format(data['list'][10]['main']['temp']),
+      "weather is{}".format(data['list'][10]['weather'][0]['main']),"pressure is{}".format(data['list'][10]['main']['pressure']),
+    "temp-max is{}".format(data['list'][10]['main']['temp_max']),
+    "temp-min is{}".format(data['list'][10]['main']['temp_min']) )
+print("6.22 18:00's{}".format(data['city']['name']),"tem is{}".format(data['list'][12]['main']['temp']),
+      "weather is{}".format(data['list'][12]['weather'][0]['main']),"pressure is{}".format(data['list'][12]['main']['pressure']),
+    "temp-max is{}".format(data['list'][12]['main']['temp_max']),
+    "temp-min is{}".format(data['list'][12]['main']['temp_min']) )
+#3
+print("今天{}".format(data['list'][10]['weather'][0]['description']),"出门记得带伞")
+print("今天{}".format(data['list'][10]['weather'][0]['description']),"不适合户外运动")
+print("今天温度是{}".format(data['list'][10]['main']['temp']),"注意添加衣物")
+print("今天风速{}".format(data['list'][10]['wind']['speed']),"不适合衣物的风干")
+#第三天6.23
+#1
+print("6.23 6:00的{}".format(data['city']['name']),"温度是{}".format(data['list'][16]['main']['temp']),
+      "天气{}".format(data['list'][16]['weather'][0]['description']),"气压是{}".format(data['list'][16]['main']['pressure']),
+    "最高温度是{}".format(data['list'][16]['main']['temp_max']),
+    "最低温度是{}".format(data['list'][16]['main']['temp_min']) )
+
+print("6.23 12:00的{}".format(data['city']['name']),"温度是{}".format(data['list'][18]['main']['temp']),
+      "天气{}".format(data['list'][18]['weather'][0]['description']),"气压是{}".format(data['list'][18]['main']['pressure']),
+    "最高温度是{}".format(data['list'][18]['main']['temp_max']),
+    "最低温度是{}".format(data['list'][18]['main']['temp_min']) )
+print("6.23 18:00的{}".format(data['city']['name']),"温度是{}".format(data['list'][20]['main']['temp']),
+      "天气{}".format(data['list'][20]['weather'][0]['description']),"气压是{}".format(data['list'][20]['main']['pressure']),
+    "最高温度是{}".format(data['list'][20]['main']['temp_max']),
+    "最低温度是{}".format(data['list'][20]['main']['temp_min']) )
+
+#2
+print("6.23 6:00's{}".format(data['city']['name']),"tem is{}".format(data['list'][16]['main']['temp']),
+      "weather is{}".format(data['list'][16]['weather'][0]['main']),"pressure is{}".format(data['list'][16]['main']['pressure']),
+    "temp-max is{}".format(data['list'][16]['main']['temp_max']),
+    "temp-min is{}".format(data['list'][16]['main']['temp_min']) )
+print("6.23 12:00's{}".format(data['city']['name']),"tem is{}".format(data['list'][18]['main']['temp']),
+      "weather is{}".format(data['list'][18]['weather'][0]['main']),"pressure is{}".format(data['list'][18]['main']['pressure']),
+    "temp-max is{}".format(data['list'][18]['main']['temp_max']),
+    "temp-min is{}".format(data['list'][18]['main']['temp_min']) )
+print("6.23 18:00's{}".format(data['city']['name']),"tem is{}".format(data['list'][20]['main']['temp']),
+      "weather is{}".format(data['list'][20]['weather'][0]['main']),"pressure is{}".format(data['list'][20]['main']['pressure']),
+    "temp-max is{}".format(data['list'][20]['main']['temp_max']),
+    "temp-min is{}".format(data['list'][20]['main']['temp_min']) )
+#3
+print("今天{}".format(data['list'][18]['weather'][0]['description']),"出门记得带伞,下午会有小雨")
+print("今天{}".format(data['list'][18]['weather'][0]['description']),"适合户外运动")
+print("今天温度是{}".format(data['list'][18]['main']['temp']),"注意添加衣物")
+print("今天风速{}".format(data['list'][18]['wind']['speed']),"不适合衣物的风干")
+#第四天6.24
+#1
+print("6.24 6:00的{}".format(data['city']['name']),"温度是{}".format(data['list'][24]['main']['temp']),
+      "天气{}".format(data['list'][24]['weather'][0]['description']),"气压是{}".format(data['list'][24]['main']['pressure']),
+    "最高温度是{}".format(data['list'][24]['main']['temp_max']),
+    "最低温度是{}".format(data['list'][24]['main']['temp_min']) )
+
+print("6.24 12:00的{}".format(data['city']['name']),"温度是{}".format(data['list'][26]['main']['temp']),
+      "天气{}".format(data['list'][26]['weather'][0]['description']),"气压是{}".format(data['list'][26]['main']['pressure']),
+    "最高温度是{}".format(data['list'][26]['main']['temp_max']),
+    "最低温度是{}".format(data['list'][26]['main']['temp_min']) )
+print("6.24 18:00的{}".format(data['city']['name']),"温度是{}".format(data['list'][28]['main']['temp']),
+      "天气{}".format(data['list'][28]['weather'][0]['description']),"气压是{}".format(data['list'][28]['main']['pressure']),
+    "最高温度是{}".format(data['list'][28]['main']['temp_max']),
+    "最低温度是{}".format(data['list'][28]['main']['temp_min']) )
+
+#2
+print("6.24 6:00's{}".format(data['city']['name']),"tem is{}".format(data['list'][24]['main']['temp']),
+      "weather is{}".format(data['list'][24]['weather'][0]['main']),"pressure is{}".format(data['list'][24]['main']['pressure']),
+    "temp-max is{}".format(data['list'][24]['main']['temp_max']),
+    "temp-min is{}".format(data['list'][24]['main']['temp_min']) )
+print("6.24 12:00's{}".format(data['city']['name']),"tem is{}".format(data['list'][26]['main']['temp']),
+      "weather is{}".format(data['list'][26]['weather'][0]['main']),"pressure is{}".format(data['list'][26]['main']['pressure']),
+    "temp-max is{}".format(data['list'][26]['main']['temp_max']),
+    "temp-min is{}".format(data['list'][26]['main']['temp_min']) )
+print("6.24 18:00's{}".format(data['city']['name']),"tem is{}".format(data['list'][28]['main']['temp']),
+      "weather is{}".format(data['list'][28]['weather'][0]['main']),"pressure is{}".format(data['list'][28]['main']['pressure']),
+    "temp-max is{}".format(data['list'][28]['main']['temp_max']),
+    "temp-min is{}".format(data['list'][28]['main']['temp_min']) )
+#3
+print("今天{}".format(data['list'][26]['weather'][0]['description']),"注意防晒")
+print("今天{}".format(data['list'][26]['weather'][0]['description']),"适合户外运动")
+print("今天温度是{}".format(data['list'][26]['main']['temp']),"注意添加衣物")
+print("今天风速{}".format(data['list'][26]['wind']['speed']),"适合衣物的风干")
+#第五天6.25
+#1
+print("6.25 6:00的{}".format(data['city']['name']),"温度是{}".format(data['list'][32]['main']['temp']),
+      "天气{}".format(data['list'][32]['weather'][0]['description']),"气压是{}".format(data['list'][32]['main']['pressure']),
+    "最高温度是{}".format(data['list'][32]['main']['temp_max']),
+    "最低温度是{}".format(data['list'][32]['main']['temp_min']) )
+
+print("6.25 12:00的{}".format(data['city']['name']),"温度是{}".format(data['list'][34]['main']['temp']),
+      "天气{}".format(data['list'][34]['weather'][0]['description']),"气压是{}".format(data['list'][34]['main']['pressure']),
+    "最高温度是{}".format(data['list'][34]['main']['temp_max']),
+    "最低温度是{}".format(data['list'][34]['main']['temp_min']) )
+print("6.25 18:00的{}".format(data['city']['name']),"温度是{}".format(data['list'][36]['main']['temp']),
+      "天气{}".format(data['list'][36]['weather'][0]['description']),"气压是{}".format(data['list'][36]['main']['pressure']),
+    "最高温度是{}".format(data['list'][36]['main']['temp_max']),
+    "最低温度是{}".format(data['list'][36]['main']['temp_min']) )
+
+#2
+print("6.25 6:00's{}".format(data['city']['name']),"tem is{}".format(data['list'][32]['main']['temp']),
+      "weather is{}".format(data['list'][32]['weather'][0]['main']),"pressure is{}".format(data['list'][32]['main']['pressure']),
+    "temp-max is{}".format(data['list'][32]['main']['temp_max']),
+    "temp-min is{}".format(data['list'][32]['main']['temp_min']) )
+print("6.25 12:00's{}".format(data['city']['name']),"tem is{}".format(data['list'][34]['main']['temp']),
+      "weather is{}".format(data['list'][34]['weather'][0]['main']),"pressure is{}".format(data['list'][34]['main']['pressure']),
+    "temp-max is{}".format(data['list'][34]['main']['temp_max']),
+    "temp-min is{}".format(data['list'][34]['main']['temp_min']) )
+print("6.25 18:00's{}".format(data['city']['name']),"tem is{}".format(data['list'][36]['main']['temp']),
+      "weather is{}".format(data['list'][36]['weather'][0]['main']),"pressure is{}".format(data['list'][36]['main']['pressure']),
+    "temp-max is{}".format(data['list'][36]['main']['temp_max']),
+    "temp-min is{}".format(data['list'][36]['main']['temp_min']) )
+#3
+print("今天{}".format(data['list'][34]['weather'][0]['description']),"出门记得防晒")
+print("今天{}".format(data['list'][34]['weather'][0]['description']),"适合户外运动")
+print("今天温度是{}".format(data['list'][34]['main']['temp']),"注意添加衣物")
+print("今天风速{}".format(data['list'][34]['wind']['speed']),"不适合衣物的风干")
+
+#第4问
+temp=data['list'][2]['main']['temp']
+print(6.21,int(temp)*"-")
+temp=data['list'][10]['main']['temp']
+print(6.22,int(temp)*"-")
+temp=data['list'][18]['main']['temp']
+print(6.23,int(temp)*"-")
+temp=data['list'][26]['main']['temp']
+print(6.24,int(temp)*"-")
+temp=data['list'][34]['main']['temp']
+print(6.25,int(temp)*"-")
+
+
+#第5问
+import urllib.request as r#导入联网工具包，命令为r
+url='http://api.openweathermap.org/data/2.5/forecast?q=ningbo,cn&mode=json&lang=zh_cn&&APPID=6a67ed641c0fda8b69715c43518b6996&units=metric'
+data=r.urlopen(url).read().decode('utf-8')
+#讲str类型转换为dict
+import json
+data=json.loads(data)
+temp=data['list'][2]['main']['temp']
+
+ls=[]
+ls.append("22.49重庆")
+ls.append("21.96天津")
+ls.append("22.91成都")
+ls.append("20.08上海")
+ls.append("26.63北京")
+ls.append("21.79南京")
+ls.append("10.69西藏")
+ls.append("20.48西安")
+ls.append("22.91桂林")
+ls.append("21.59宁波")
+ls.sort(reverse=True)
+ls
+#第五题
+import urllib.request as r#导入联网工具包，命令为r
+url='http://api.openweathermap.org/data/2.5/forecast?q=chongqing,cn&mode=json&lang=zh_cn&&APPID=6a67ed641c0fda8b69715c43518b6996&units=metric'
+data=r.urlopen(url).read().decode('utf-8')
+#讲str类型转换为dict
+import json
+data=json.loads(data)
+
+def msg(a,b,c,d,e,f,g):
+    print('城市：{}'.format(a))
+    print('时间：{}'.format(b))
+    print('温度：{}'.format(c))
+    print('天气：{}'.format(d))
+    print('气压：{}'.format(e))
+    print('最高温度：{}'.format(f))
+    print('最低温度：{}'.format(g))
+hour=8
+msg(data['city']['name'],data['list'][hour]['dt_txt'],data['list'][hour]['main']['temp'],
+    data['list'][hour]['weather'][0]['description'],data['list'][hour]['main']['pressure'],
+    data['list'][hour]['main']['temp_max'],data['list'][hour]['main']['temp_min'])
+
+
+#第六题
+import urllib.request as r#导入联网工具包，命令为r
+url='https://s.taobao.com/search?q=%E8%A3%A4%E5%AD%90&bcoffset=3&ntoffset=3&p4ppushleft=1%2C48&s=44&ajax=true'
+data=r.urlopen(url).read().decode('utf-8')
+#讲str类型转换为dict
+import json
+data=json.loads(data)
+#data字典-》mods 字典-》itemlist 字典-》data字典-》auctions 列表-》index 0 字典-》raw_title 变量
+#1,2
+items=range(0,44,4)
+for item in items:
+    print("商品名:{}".format(data['mods']['itemlist']['data']['auctions'][item]['raw_title']),
+      "价格:{}".format(data['mods']['itemlist']['data']['auctions'][item]['view_price']),
+      "付款人数:{}".format(data['mods']['itemlist']['data']['auctions'][item]['view_sales']), 
+     "店铺名:{}".format(data['mods']['itemlist']['data']['auctions'][item]['nick']),   
+     "地址:{}".format(data['mods']['itemlist']['data']['auctions'][item]['item_loc'] ))
+#3
+jg=[]
+items=range(0,44)
+for item in items:
+    prince=data['mods']['itemlist']['data']['auctions'][item]['view_price']
+    princes=float(prince)
+    jg.append(princes)
+jg.sort(reverse=True)
+print(jg,end="\t")
+#4
+import re
+xsl=[]
+items=range(0,44)
+for item in items:
+    prince=data['mods']['itemlist']['data']['auctions'][item]['view_sales']
+    prince=re.sub("\D","",prince)#截取数字
+    princes=float(prince)
+    xsl.append(princes)  #分开运行
+xsl.sort(reverse=True)
+print(xsl,end="\t")
+#5
+items=range(0,44)
+for item in items:
+    yf=data['mods']['itemlist']['data']['auctions'][item]['view_fee']
+    if yf=='0.00':
+        print(data['mods']['itemlist']['data']['auctions'][item]['raw_title'])
+
+#第七.八题        
+
+import urllib.request as r#导入联网工具包，命令为r
+url='http://api.openweathermap.org/data/2.5/forecast?q=chongqing,cn&mode=json&lang=zh_cn&&APPID=6a67ed641c0fda8b69715c43518b6996&units=metric'
+data=r.urlopen(url).read().decode('utf-8')
+#讲str类型转换为dict
+import json
+data=json.loads(data)
+#1
+hours=range(0,21)
+for hour in hours:
+    tq=data['list'][hour]['weather'][0]['description']
+    if tq=='小雨':
+        print(data['list'][hour]['dt_txt'],"出门请带伞")
+    elif tq=='多云':
+        print(data['list'][hour]['dt_txt'],"适合户外运动")
+    elif tq=='晴':
+        print(data['list'][hour]['dt_txt'],"注意防晒")
+    elif tq=='中雨':
+        print(data['list'][hour]['dt_txt'],"出门请穿好雨鞋，带好雨伞")
+    else:
+        print(data['list'][hour]['dt_txt'],"建议呆在室内")
+    for i in ["温馨提醒"]:
+        print(i)
+for i in["天","气","预","报","你","身","边","的","生","活","管","家"]:
+    print("?"*3,"?"*4,"?"*3,i,"?"*10)
+    
+print("      {}      {}     ".format("气","家"))
+print("    {}    {}    {}    ".format("预","天","管"))
+print("     {}        {}    ".format("报","活"))
+print("      {}      {}     ".format("你","生"))
+print("          {}    ".format("的"))
+#第九题 
+import urllib.request as r#导入联网工具包，命令为r
+url='https://kyfw.12306.cn/otn/leftTicket/query?leftTicketDTO.train_date=2018-06-26&leftTicketDTO.from_station=CQW&leftTicketDTO.to_station=BJP&purpose_codes=ADULT'
+data=r.urlopen(url).read().decode('utf-8')
+#讲str类型转换为dict
+import json
+data=json.loads(data)
+data=data['data']['result']
+
+p='  '
+title='发车时间{}车次{}出发站/到达站{}出发时间/到达时间{}历时{}商务座/特等座{}一等座{}二等座{}高级软卧{}软卧{}动卧{}硬卧{}软座{}硬座{}无座{}其他{}备注{}'.format(p,p,p,p,p,p,p,p,p,p,p,p,p,p,p,p,p)
+title=title.split(p)
+for j in title:
+    print(j.center(8),end='')
+print() 
+lss=[]
+lsss=[] 
+for i in range(0,9):
+    s=data[i]
+    ls=s.split('|')
+    len([p,p,p,p,p,p,p,p,p,p,p,p,p,p,p,p])
+    ls=[ls[13],ls[3],ls[6],ls[7],ls[8],ls[9],ls[10],ls[32],ls[31],ls[30],'--',ls[23],'--',ls[28],'--',ls[29],ls[26],'--',ls[1],'\n']
+    for i in ls:
+        print(str(i).center(9).replace('[','').replace(']','').replace('CUW','重庆北').replace('CXW','重庆南').replace('CQW','重庆').replace('BXP','北京'),end='')
+    lss.append(ls[4])
+    lsss.append(ls[6])
+sorted(lss)
+sorted(lsss)
+#第3~100页
+for i in range(3,100):
+    a=44*i
+    import urllib.request as r
+    url='https://s.taobao.com/search?q=%E8%80%B3%E7%8E%AF&imgfile=&commend=all&ssid=s5-e&search_type=item&sourceId=tb.index&spm=a21bo.2017.201856-taobao-item.1&ie=utf8&initiative_id=tbindexz_20170306&loc=%E5%8C%97%E4%BA%AC&bcoffset=3&ntoffset=3&p4ppushleft=1,48&s={}&ajax=true'.format(a)
+    print(url)
+    data=r.urlopen(url).read().decode('utf-8')
+    import json
+    data=json.loads(data)
+    items=range(0,43)
+    for item in items:
+        aa=data['mods']['itemlist']['data']['auctions'][item]['title']
+        bb=data['mods']['itemlist']['data']['auctions'][item]['view_price']
+        cc=data['mods']['itemlist']['data']['auctions'][item]['view_sales'] 
+        dd=data['mods']['itemlist']['data']['auctions'][item]['nick']   
+        ee=data['mods']['itemlist']['data']['auctions'][item]['item_loc']
+        f=open('./slslsl.csv','a')
+        f.write("商品名:{},价格:{},付款人数:{},店铺名:{},地址:{}\n".format(aa,bb,cc,dd,ee))
+        f.close()
+
+
+#第一页
+import urllib.request as r
+url='https://s.taobao.com/search?initiative_id=tbindexz_20170306&ie=utf8&spm=a21bo.2017.201856-taobao-item.2&sourceId=tb.index&search_type=item&ssid=s5-e&commend=all&imgfile=&q=%E8%80%B3%E7%8E%AF&suggest=history_1&_input_charset=utf-8&wq=&suggest_query=&source=suggest&loc=%E5%8C%97%E4%BA%AC&ajax=true'
+data=r.urlopen(url).read().decode('utf-8')
+import json
+data=json.loads(data)
+items=range(0,31)
+for item in items:
+    aa=data['mods']['itemlist']['data']['auctions'][item]['title']
+    bb=data['mods']['itemlist']['data']['auctions'][item]['view_price']
+    cc=data['mods']['itemlist']['data']['auctions'][item]['view_sales'] 
+    dd=data['mods']['itemlist']['data']['auctions'][item]['nick']   
+    ee=data['mods']['itemlist']['data']['auctions'][item]['item_loc'] 
+    f=open('./slslsl.csv','a')
+    f.write("商品名:{},价格:{},付款人数:{},店铺名:{},地址:{}\n".format(aa,bb,cc,dd,ee))
+    f.close()
+    
+    
+#第二页    
+import urllib.request as r
+url='https://s.taobao.com/search?initiative_id=tbindexz_20170306&ie=utf8&spm=a21bo.2017.201856-taobao-item.2&sourceId=tb.index&search_type=item&ssid=s5-e&commend=all&imgfile=&q=%E8%80%B3%E7%8E%AF&suggest=history_1&_input_charset=utf-8&wq=&suggest_query=&source=suggest&loc=%E5%8C%97%E4%BA%AC&bcoffset=3&ntoffset=3&p4ppushleft=1%2C48&s=44&ajax=true'
+data=r.urlopen(url).read().decode('utf-8')
+import json
+data=json.loads(data)
+items=range(0,31)
+for item in items:
+    aa=data['mods']['itemlist']['data']['auctions'][item]['title']
+    bb=data['mods']['itemlist']['data']['auctions'][item]['view_price']
+    cc=data['mods']['itemlist']['data']['auctions'][item]['view_sales'] 
+    dd=data['mods']['itemlist']['data']['auctions'][item]['nick']   
+    ee=data['mods']['itemlist']['data']['auctions'][item]['item_loc'] 
+    f=open('./slslsl.csv','a')
+    f.write("商品名:{},价格:{},付款人数:{},店铺名:{},地址:{}\n".format(aa,bb,cc,dd,ee))
+    f.close()
+
+#第十题
+import urllib.request as r#导入联网工具包，命令为r
+date=input('请输入年月日')
+from_station=input('出发站')#北京
+from_station=hanzi_to_pin(from_station)
+to_station=input('到达站')#成都
+to_station=hanzi_to_pin(to_station)
+print(date,from_station,to_station)
+#https://kyfw.12306.cn/otn/leftTicket/query?leftTicketDTO.train_date=2018-07-17&leftTicketDTO.from_station=BJP&leftTicketDTO.to_station=NJH&purpose_codes=0X00
+url='https://kyfw.12306.cn/otn/leftTicket/query?leftTicketDTO.train_date={}&leftTicketDTO.from_station={}&leftTicketDTO.to_station={}&purpose_codes=ADULT'
+url=url.format(date,from_station,to_station).replace('\n','')
+print(url)
+data=r.urlopen(url).read().decode('utf-8')
+a=url.replace('{}','')
+
+
+import urllib.request as rr
+urll='{}'.format(a)
+
+data=rr.urlopen(urll).read().decode('utf-8')
+import json
+data=json.loads(data)
+data=data['data']['result']
+p='  '
+title='发车时间{}车次{}出发站/到达站{}出发时间/到达时间{}历时{}商务座/特等座{}一等座{}二等座{}高级软卧{}软卧{}动卧{}硬卧{}软座{}硬座{}无座{}其他{}备注'.format(p,p,p,p,p,p,p,p,p,p,p,p,p,p,p,p)
+title=title.split(p)
+for j in title:
+    print(j.center(11),end='')
+print()  
+for i in range(0,9):
+    s=data[i]
+    ls=s.split('|')
+    len([p,p,p,p,p,p,p,p,p,p,p,p,p,p,p,p])
+    ls=[ls[13],ls[3],[ls[6],ls[7]],[ls[8],ls[9]],ls[10],ls[32],ls[31],ls[30],'--','--','--','--','--','--',ls[26],'--',ls[1]]
+    for i in ls:
+        print(str(i).center(14).replace('[','').replace(']',''),end='')
+
+
+#第十一，十二题
+import urllib.request as r#导入联网工具包，命令为r
+url='http://www.baidu.com/s?ie=utf-8&f=8&rsv_bp=0&rsv_idx=1&tn=baidu&wd=%E8%B0%B7%E6%AD%8C&rsv_pq=fac7cb6400059e8e&rsv_t=8b5dvW54nEw5JqTygUDtk1EkStMPexS7HbsqNCKVc39E%2FDn4rd4ZCvORiEk&rqlang=cn&rsv_enter=1&rsv_sug3=7&rsv_sug1=7&rsv_sug7=101&rsv_sug2=0&inputT=14337&rsv_sug4=18167'
+data=r.urlopen(url).read().decode('utf-8')
+print(data)
+import re
+#1
+ls=re.compile('"title":"(.*?)"').findall(data)
+#2
+ls1=re.compile('<div class="c-abstract">(.*?)</div>').findall(data)
+#3
+ls2=re.compile('style="text-decoration:none;">(.*?)&nbsp').findall(data)
+#题目12
+import urllib.request as r#导入联网工具包，命令为r
+url='http://api.openweathermap.org/data/2.5/forecast?q=zhengzhou,cn&mode=json&lang=zh_cn&&APPID=6a67ed641c0fda8b69715c43518b6996&units=metric'
+data1=r.urlopen(url).read().decode('utf-8')
+import re
+#1天气描述
+ls3=re.compile('"description":"(.*?)"').findall(data1)
+#1天气温度
+ls4=re.compile('"temp":(.*?),"').findall(data1)
+#1天气气压
+ls5=re.compile('"pressure":(.*?),"').findall(data1)
+#第十三题
+import urllib.request as r
+for aa in range(1,14):
+    req=r.Request('https://www.qiushibaike.com/8hr/page/{}/'.format(aa),headers={'User-Agent':'Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/65.0.3325.146 Safari/537.36'})
+    myurl=r.urlopen(req)
+    print(myurl.getcode())
+    data=myurl.read().decode('utf-8')
+    zuozhe='alt="(.*?)"'
+    neirong='<span>(.*?)</span>'
+    import re
+    ls=re.compile(zuozhe,re.S).findall(data)
+    lss=re.compile(neirong,re.S).findall(data)
+    for j in range(0,44):
+        print("作者:{}\n内容:{}".format(ls[j],lss[j]))
+
+#第十四题
+import urllib.request as r
+url='http://www.gaokaopai.com/university-ajaxGetMajor.html'
+data='id=2948&type=2&city=50&state=1'.encode()
+req=r.Request(url,data=data,headers={'User-Agent':'Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/65.0.3325.146 Safari/537.36','X-Requested-With':'XMLHttpRequest'})
+d=r.urlopen(req).read().decode('utf-8','ignore')
+import json
+d1=json.loads(d)
+#题目14
+#1
+import re
+f=open("./all_school.txt","r",encoding='utf-8')
+data=f.read()
+data1=re.compile('(.*?)\t.*\t').findall(data)
+data2=re.compile('http://www.gaokaopai.com/daxue-jianjie-(.*?).html').findall(data)
+for i in range(0,len(data1)):
+    print("{}的网址编号{}".format(data1[i],data2[i]))
+#2
+import urllib.request as r
+url='http://www.gaokaopai.com/daxue-0-0-0-0-0-0-0.html'
+data='id=2948&type=2&city=50&state=1'.encode()
+req=r.Request(url,data=data,headers={'User-Agent':'Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/65.0.3325.146 Safari/537.36','X-Requested-With':'XMLHttpRequest'})
+d=r.urlopen(req).read().decode('utf-8','ignore')
+ls1=re.compile('<span><a href="http://www.gaokaopai.com/daxue-(.*?)-0-0-0-0-0-0.html">').findall(d)
+ls2=re.compile('<span><a href="http://www.gaokaopai.com/daxue-..-0-0-0-0-0-0.html">(.*?)</a></span>').findall(d)
+for j in range(0,len(ls1)):
+    print(ls2[j],ls1[j])
+#3
+'''
+import urllib.request as r
+url='http://www.gaokaopai.com/university-ajaxGetMajor.html'
+for g in data2:
+    try:
+        data='id={}&type=1&city=42&state=1'.format(g).encode()
+        req=r.Request(url,data=data,headers={'User-Agent':'Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/65.0.3325.146 Safari/537.36','X-Requested-With':'XMLHttpRequest'})
+        d=r.urlopen(req).read().decode('utf-8','ignore')
+        import json
+        d1=json.loads(d)
+        ff=open(".\各地区在湖北的文科招生计划.txt","a",encoding='utf-8')
+        for jj in range(0,len(d1["data"])):
+            s0=d1["data"][jj]["city"]
+            s1=d1["data"][jj]["school"]
+            s2=d1["data"][jj]["profess"]
+            s22=d1["data"][jj]["subject"]
+            s3=d1["data"][jj]["plan"]
+            ff.write("城市:{},学校:{},专业:{},科类:{},招生人数:{}\n".format(s0,s1,s2,s22,s3))
+    except Exception as err:
+        print("该学校在该地区没有招生计划\n")
+ff.close()
+'''
+  #3数据
+import urllib.request as r
+url='http://www.gaokaopai.com/university-ajaxGetMajor.html'
+fff=open(".\数据源.txt","a",encoding='utf-8')
+for ii in data2:
+    try:
+        data='id={}&type=1&city=42&state=1'.format(ii).encode()
+        req=r.Request(url,data=data,headers={'User-Agent':'Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/65.0.3325.146 Safari/537.36','X-Requested-With':'XMLHttpRequest'})
+        ddd=r.urlopen(req).read().decode('utf-8','ignore')
+        fff.write(ddd+"\n")
+    except Exception as err:
+        fff.write("没有数据源\n") 
+fff.close()
+#题目14
+#1
+import re
+f=open("./all_school.txt","r",encoding='utf-8')
+data=f.read()
+data1=re.compile('(.*?)\t.*\t').findall(data)
+data2=re.compile('http://www.gaokaopai.com/daxue-jianjie-(.*?).html').findall(data)
+for i in range(0,len(data1)):
+    print("{}的网址编号{}".format(data1[i],data2[i]))
+#2
+import urllib.request as r
+url='http://www.gaokaopai.com/daxue-0-0-0-0-0-0-0.html'
+data='id=2948&type=2&city=50&state=1'.encode()
+req=r.Request(url,data=data,headers={'User-Agent':'Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/65.0.3325.146 Safari/537.36','X-Requested-With':'XMLHttpRequest'})
+d=r.urlopen(req).read().decode('utf-8','ignore')
+ls1=re.compile('<span><a href="http://www.gaokaopai.com/daxue-(.*?)-0-0-0-0-0-0.html">').findall(d)
+ls2=re.compile('<span><a href="http://www.gaokaopai.com/daxue-..-0-0-0-0-0-0.html">(.*?)</a></span>').findall(d)
+for j in range(0,len(ls1)):
+    print(ls2[j],ls1[j])
+#3
+#import urllib.request as r
+#url='http://www.gaokaopai.com/university-ajaxGetMajor.html'
+#for g in data2:
+#    try:
+#        data='id={}&type=1&city=42&state=1'.format(g).encode()
+#        req=r.Request(url,data=data,headers={'User-Agent':'Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/65.0.3325.146 Safari/537.36','X-Requested-With':'XMLHttpRequest'})
+#        d=r.urlopen(req).read().decode('utf-8','ignore')
+#        import json
+#        d1=json.loads(d)
+#        ff=open("./各地区在湖北的文科招生计划.txt","a",encoding='utf-8')
+#        for jj in range(0,len(d1["data"])):
+#            s0=d1["data"][jj]["city"]
+#            s1=d1["data"][jj]["school"]
+#            s2=d1["data"][jj]["profess"]
+#            s22=d1["data"][jj]["subject"]
+#            s3=d1["data"][jj]["plan"]
+#            ff.write("城市:{},学校:{},专业:{},科类:{},招生人数:{}\n".format(s0,s1,s2,s22,s3))
+#    except Exception as err:
+#        print("该学校在该地区没有招生计划\n")
+#ff.close()
+
+#3数据
+import urllib.request as r
+url='http://www.gaokaopai.com/university-ajaxGetMajor.html'
+fff=open("./sl1.txt","a",encoding='utf-8')
+for ii in range(0,2300):
+    data='id={}&type=1&city=42&state=1'.format(ii).encode()
+    req=r.Request(url,data=data,headers={'User-Agent':'Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/65.0.3325.146 Safari/537.36','X-Requested-With':'XMLHttpRequest'})
+    ddd=r.urlopen(req).read().decode('utf-8','ignore')
+    if ddd[0]=="{":
+        fff.write(ddd+"\n") 
+    else:
+        while ddd[0]!="{":
+            url='http://www.gaokaopai.com/university-ajaxGetMajor.html'
+            data='id={}&type=1&city=42&state=1'.format(ii).encode()
+            req=r.Request(url,data=data,headers={'User-Agent':'Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/65.0.3325.146 Safari/537.36','X-Requested-With':'XMLHttpRequest'})
+            ddd=r.urlopen(req).read().decode('utf-8','ignore')
+        fff.write(ddd+"\n")
+fff.close()
+#4
+#import urllib.request as r
+#url='http://www.gaokaopai.com/university-ajaxGetMajor.html'
+#area={'华中':'河南','华中':'湖北','华中':'湖南'}
+#areaplan={'华中':0}
+#for ii in range(0,2300):
+#    data='id={}&type=1&city=42&state=1'.format(ii).encode()
+#    req=r.Request(url,data=data,headers={'User-Agent':'Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/65.0.3325.146 Safari/537.36','X-Requested-With':'XMLHttpRequest'})
+#    d4=r.urlopen(req).read().decode('utf-8','ignore')
+#    import json
+#    data=json.loads(d4)
+#    if d4[0]=="{":
+#        if data['status']==1:
+#            for jj in range(0,len(data["data"])):
+#                s0=data["data"][jj]["city"]
+#                s1=data["data"][jj]["plan"]
+#                
+#                areaplan[jj[s0]]=areaplan[jj[s0]]+int[jj[s1]]
+#    else:
+#        while d4[0]!="{":
+#            url='http://www.gaokaopai.com/university-ajaxGetMajor.html'
+#            data='id={}&type=1&city=42&state=1'.format(ii).encode()
+#            req=r.Request(url,data=data,headers={'User-Agent':'Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/65.0.3325.146 Safari/537.36','X-Requested-With':'XMLHttpRequest'})
+#            d4=r.urlopen(req).read().decode('utf-8','ignore')
+#        import json
+#        data=json.loads(d4)   
+#        if data['status']==1:
+#            for jj in range(0,len(data["data"])):
+#                s0=data["data"][jj]["city"]
+#                s1=data["data"][jj]["plan"]
+#                areaplan[jj[s0]]=areaplan[jj[s0]]+int[jj[s1]]
+#4
+f=open("./sl1.txt","r",encoding='utf-8')
+data=f.readlines()
+rs=[]
+import json
+for i in range(0,2300):
+    data1=json.loads(data[i])
+    if data1['status']==1:
+        for j in range(0,len(data1["data"])):
+            data2=data1["data"][j]["plan"]
+            rs.append(data2)
+zrs=0
+for j in range(0,len(rs)):
+    zrs=zrs+int(rs[j])
+print("全国在湖北招收文科的总人数:{}".format(zrs))
+
+#第十五，十六题
+#15
+import urllib.request as r
+url='http://api.openweathermap.org/data/2.5/forecast?q=zhengzhou,cn&mode=json&lang=zh_cn&&APPID=6a67ed641c0fda8b69715c43518b6996&units=metric'
+data=r.urlopen(url).read().decode('utf-8')
+import json  
+data=json.loads(data)  
+class Weather:
+    def __init__(self,time,temp,description,pressure):
+        self.time=time
+        self.temp=temp
+        self.description=description
+        self.pressure=pressure
+    def msg(self):
+        print("{}的天气:{},温度:{},气压:{}".format(self.time,self.description,self.temp,self.pressure))
+for i in range(3,20,8):
+    t=data["list"][i]["dt_txt"]
+    a=data["list"][i]["weather"][0]["description"]
+    b=data["list"][i]["main"]["temp"]
+    c=data["list"][i]["main"]["pressure"]
+    D=Weather(t,a,b,c)
+    D.msg()  
+
+#东北（黑龙江省、吉林省、辽宁省）；
+#华东（上海市、江苏省、浙江省、安徽省、福建省、江西省、山东省、台湾省）；
+#华北（北京市、天津市、山西省、河北省、内蒙古自治区）；
+#华中（河南省、湖北省、湖南省）；
+#华南（广东省、广西壮族自治区、海南省、香港特别行政区、澳门特别行政区）；
+#西南（四川省、贵州省、云南省、重庆市、西藏自治区）；
+#西北（陕西省、甘肃省、青海省、宁夏回族自治区、新疆维吾尔自治区）
+
+area={'黑龙江':'东北','吉林':'东北','辽宁':'东北','上海':'华东','江苏':'华东','浙江':'华东','安徽':'华东','福建':'华东','江西':'华东','山东':'华东','北京':'华北','天津':'华北','山西':'华北','河北':'华北','内蒙古':'华北','河南':'华中','湖南':'华中','湖北':'华中','广东':'华南','广西':'华南','海南':'华南','西藏':'西南','四川':'西南','贵州':'西南','云南':'西南','重庆':'西南','陕西':'西北','甘肃':'西北','青海':'西北','新疆':'西北','宁夏':'西北'}
+areaplan={'东北':0,'华东':0,'华北':0,'西北':0,'华中':0,'华南':0,'西南':0}
+ls=[]
+f=open('./1.txt','r',encoding='utf-8')
+ls1=f.readlines()
+import json
+for i in range(len(ls1)):
+    ls.append(json.loads(ls1[i]))
+for j in range(len(ls)):
+    if ls[j]['status']==0:
+        continue
+    ls1=ls[j]['data']
+    for school in ls1:
+        city=school['city']
+        areaplan[area[city]]=areaplan[area[city]]+int(school['plan'])
+a=areaplan['东北']+areaplan['华东']+areaplan['华北']+areaplan['华南']+areaplan['华中']+areaplan['西南']+areaplan['西北']
+print('全国在东北地区招生人数:{}\n全国在华东地区招生人数:{}\n全国在华北地区招生人数:{}\n全国在华南地区招生人数:{}\n全国在华中地区招生人数:{}\n全国在西南地区招生人数:{}\n全国在西北地区招生人数:{}\n全国各地区招生总人数:{}'.format(areaplan['东北'],areaplan['华东'],areaplan['华北'],areaplan['华南'],areaplan['华中'],areaplan['西南'],areaplan['西北'],a))
+#小组软件
+print('您的无忧选择')
+print('              --------             / \          ---------')
+print('             |                    /   \             |      ')
+print('             |                   /     \            |')
+print('             |--------          /-------\           |')
+print('             |                 /         \          |')
+print('             |                /           \         |')
+print('              --------       /             \        |')
+print()
+print(' \            /\            /    |           |       / \      ----------')   
+print('  \          /  \          /     |           |      /   \          |')
+print('   \        /    \        /      |           |     /     \         | ')
+print('    \      /      \      /       |-----------|    /-------\        | ')
+print('     \    /        \    /        |           |   /         \       |  ')
+print('      \  /          \  /         |           |  /           \      | ')  
+print('       \/            \/          |           | /             \     |')
+
+import time
+import urllib.request as r
+import re
+import random
+d=r.urlopen('http://home.meishichina.com/recipe-menu.html')
+data=d.read().decode('utf-8')
+c1=re.compile('href="https://www.meishichina.com/mofang/(.*?)/" target="_blank">(.*?)</a></li>').findall(data)
+items=[]      
+for i in range(len(c1)):
+    items.append(c1[i][1])    
+a="不满意" 
+while a=="不满意":
+    print("为客官推荐:"+random.choice(items))
+    print('温馨提示：如果想小吃继续为您推荐的美食，请输入"不满意",结束请输入任意词')  
+    a=input("-->：")   
+print('              ｜    ')
+print('           ｜     ｜')
+print('             /  \ ')
+print('           /      \ ')
+print('         /    欢    \ ')
+print('       /      迎      \ ')
+print('     /        下        \ ')
+print('    ---------------------- ')
+print('    \         次          /')
+print('     \        使         /')  
+print('      \       用        /')
+print('       \               / ')
+print('        \             /')
+print('         -------------  ')
+time.sleep(5)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
